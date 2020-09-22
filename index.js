@@ -13,9 +13,11 @@ const hbs = exphbs.create({
 
 app.engine('hbs', hbs.engine); // объявили движок handlebars
 app.set('view engine', 'hbs');
-app.set('views', 'views'); // второй параметр это папка с страницами html
+app.set('views', 'views'); // второй параметр это папка с страницами в которых храним html
 
 app.use(express.static('public'));
+
+app.use(express.urlencoded({extended: true}))
 
 app.use('/', homeRoutes);
 app.use('/add', addRoutes);
